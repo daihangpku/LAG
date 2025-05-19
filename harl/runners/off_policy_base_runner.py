@@ -168,10 +168,9 @@ class OffPolicyBaseRunner:
             self.value_normalizer = ValueNorm(1, device=self.device)
         else:
             self.value_normalizer = None
-
         if self.algo_args["train"]["model_dir"] is not None:
+            print("restoring model from {}".format(self.algo_args["train"]["model_dir"]))
             self.restore()
-
         self.total_it = 0  # total iteration
 
         if (
